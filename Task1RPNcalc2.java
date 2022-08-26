@@ -9,9 +9,9 @@ public class Task1RPNcalc2 {
     public static void main(String[] args) throws IOException{
 
         Boolean tag = false;
-        List<String> content = Files.readAllLines(Paths.get("Calc3.stk"));
+        List<String> stk = Files.readAllLines(Paths.get("Calc3.stk"));
         Stack<Float> values = new Stack<Float>();
-        for (String string : content) {
+        for (String string : stk) {
             try {
                 if (tag) System.out.println("Push " + Float.parseFloat(string));
 
@@ -31,7 +31,6 @@ public class Task1RPNcalc2 {
                 else if (string.equals("-")) result = a - b;
                 else if (string.equals("*")) result = a * b;
                 else if (string.equals("/")) result = a / b;
-                else if (string.equals("^")) result = (float) Math.pow(a, b);
                 
                 if(!string.isEmpty()){
                     values.push(result);
@@ -41,6 +40,6 @@ public class Task1RPNcalc2 {
         }
 
         System.out.println("The result is: " + values.pop());
-        
+
     }
 }
