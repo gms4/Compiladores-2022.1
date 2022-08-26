@@ -47,6 +47,6 @@ public class Task1RPNcalc {
         }
 
         Integer out = stackpile.pop();
-        System.out.println(out);
+        System.out.println("The RPN Calculator gives the following result: " + out);
     }
 }
