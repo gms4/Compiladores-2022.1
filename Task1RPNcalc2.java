@@ -8,43 +8,39 @@ import java.lang.Math;
 public class Task1RPNcalc2 {
     public static void main(String[] args) throws IOException{
 
-        Boolean logging = false;
+        Boolean tag = false;
         List<String> content = Files.readAllLines(Paths.get("Calc3.stk"));
-        Stack<Float> values= new Stack<Float>();
+        Stack<Float> values = new Stack<Float>();
         for (String string : content) {
-            try{
-                if(logging) System.out.println("Push "+Float.parseFloat(string));
+            try {
+                if (tag) System.out.println("Push " + Float.parseFloat(string));
 
                 values.push(Float.parseFloat(string));
                 
             }
-            catch (NumberFormatException ex){
+
+            catch (NumberFormatException ex) {
                 float b = values.pop();
                 float a = values.pop();
-                float result=0;
+                float result = 0;
 
-                if(logging) System.out.println("Pop "+ a);
-                if(logging) System.out.println("Pop "+ b);
+                if(tag) System.out.println("Pop " + a);
+                if(tag) System.out.println("Pop " + b);
                 
-                if(string.equals("+")){
-                    result = a+b;
-                } else if (string.equals("-")){
-                    result = a-b;
-                }else if (string.equals("*")){
-                    result = a*b;
-                }else if (string.equals("/")){
-                    result = a/b;
-                }else if (string.equals("^")){
-                    result = (float)Math.pow(a, b);
-                }
-
+                if(string.equals("+")) result = a + b;
+                else if (string.equals("-")) result = a - b;
+                else if (string.equals("*")) result = a * b;
+                else if (string.equals("/")) result = a / b;
+                else if (string.equals("^")) result = (float) Math.pow(a, b);
+                
                 if(!string.isEmpty()){
                     values.push(result);
-                    if(logging) System.out.println("Push "+result);
+                    if(tag) System.out.println("Push " + result);
                 }
             }
         }
 
         System.out.println("The result is: " + values.pop());
+        
     }
 }
