@@ -9,7 +9,7 @@ public class Task1RPNcalc2 {
     public static void main(String[] args) throws IOException{
 
         Boolean logging = false;
-        List<String> content = Files.readAllLines(Paths.get("Calc1.stk"));
+        List<String> content = Files.readAllLines(Paths.get("Calc3.stk"));
         Stack<Float> values= new Stack<Float>();
         for (String string : content) {
             try{

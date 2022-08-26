@@ -10,7 +10,7 @@ public class Task1RPNcalc {
 
     public static void main (String[] args) {
 
-        File file = new File("Calc1.stk");
+        File file = new File("Calc2.stk");
         ArrayList<String> input = new ArrayList<String>();
 
         try (Scanner in = new Scanner(file, StandardCharsets.UTF_8)) {
