@@ -1,0 +1,28 @@
+Roteiro:
+- rever a Aula 11 sobre introducao a analise lexica [scanning]
+- evoluir o projeto da Task 01 para implementar uma feature de scanning:
+   -- No geral, nosso Programa le um arquivo com a expressao em RPN e devolve a expressao avalliada
+   -- a feature de scanning deve retornar uma lista de tokens
+   -- a partir dessa lista de tokens que e realizada a interpretacao das expressoes com uma pilha
+   -- a feature de scanning deve retornar um erro caso nao reconheca um "num" [numero] ou "op" [operator]
+
+Exemplo de entrada [com sucesso]:
+10
+10
++
+// a lista de tokens reconhecida [caso a imprima]
+Token [type=NUM, lexeme=10]
+Token [type=NUM, lexeme=10]
+Token [type=PLUS, lexeme=+]
+
+Saida: 20
+
+Exemplo de entrada [com falha]:
+10
+s
++
+Error: Unexpected character: s
+
+*Obs: para implementacao da lista de tokens, a classe Token e TokenType em anexo devera servir de suporte para o [manual] scanning; sendo assim, ou inves do codigo retornado na linha 94 [do projeto base que passei]: List<String> tokens = scan(source); nos teriamos o seguinte: List<Token> tokens = scan(source);
+**Obs: obviamente minimas alteracoes podem ser feitas [ex: adaptar o pacote das classes em anexo para seu projeto]
+***Obs: ainda nao usar expressões regulares para versão 2; foco eh a identificacao dos token types

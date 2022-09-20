@@ -13,7 +13,7 @@ public class Task2RPNCalcSS {
     public static void main(String[] args) throws Exception {
         Stack<String> stackPile = new Stack<String>();
         List<Token> tokenList = new ArrayList<>();
-        File text = new File("Calc1.stk");
+        File text = new File("Calc1Task2.stk");
         try (Scanner scanner = new Scanner(text)) {
             while(scanner.hasNextLine()){
                 String digit = scanner.nextLine();
