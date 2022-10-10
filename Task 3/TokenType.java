@@ -14,8 +14,6 @@
  *     http://www.cin.ufpe.br/~hemr/
  * ******************************************************************/
 
-package postfix.lexer;
-
 /**
  * @author Henrique Rebelo
  */

@@ -14,15 +14,29 @@
  *     http://www.cin.ufpe.br/~hemr/
  * ******************************************************************/
 
-package postfix.parser;
-
 /**
  * @author Henrique Rebelo
  */
-public class ParserError extends RuntimeException{
-	private static final long serialVersionUID = 1L;
+public class Token {
 
-	public ParserError(String msg) {
-		super(msg);
+	// Tokenizer delimiters for scanning 
+	// \\t -> the tab character
+	// \\n -> the newline character
+	// \\r -> the carriage-return character
+	// \\f -> the form-feed character
+	// ' ' -> the space character
+	public static final String TOKENIZER_DELIMITER = "\t\n\r\f ";
+
+	public final TokenType type; // token type
+	public final String lexeme; // token value
+
+	public Token (TokenType type, String value) {
+		this.type = type;
+		this.lexeme = value;
+	}
+
+	@Override
+	public String toString() {
+		return "Token [type=" + this.type + ", lexeme=" + this.lexeme + "]";
 	}
 }

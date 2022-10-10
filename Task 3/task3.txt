@@ -1,0 +1,28 @@
+Roteiro:
+- rever a Aula 11 sobre introducao a analise lexica [scanning]
+- evoluir o projeto da Task 02 para implementar uma feature de scanning [com Java Regex]:
+   -- No geral, nosso Programa le um arquivo com a expressao em RPN e devolve a expressao avalliada
+   -- a feature de scanning deve continuar a retornar uma lista de tokens [como ja realizada na Task 01], 
+      porém, agora, utilizando regex [regular expressions com Java]
+   -- a partir dessa lista de tokens a interpretacao das expressoes eh realizada com uma pilha
+   -- a feature de scanning deve continuar retornar um erro caso nao reconheca um "num" [numero] ou "op" [operator]
+   -- implementar as features de regex em uma classe chamada Regex 
+
+Exemplo de entrada [com sucesso]:
+10
+10
++
+// a lista de tokens reconhecida [caso a imprima]
+Token [type=NUM, lexeme=10]
+Token [type=NUM, lexeme=10]
+Token [type=PLUS, lexeme=+]
+
+Saida: 20
+
+Exemplo de entrada [com falha]:
+10
+s
++
+Error: Unexpected character: s
+
+*Obs: para implementacao da feature de Java regex a classe Regex em anexo devera servir de suporte para o [regex] scanning; note, entretanto, que devera implementar os dois metodos de suporte para o scanning com regex: um para identificar numeros e outro para operacoes.
