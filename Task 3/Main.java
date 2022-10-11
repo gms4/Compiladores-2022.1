@@ -1,5 +1,4 @@
 
-
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -22,6 +21,81 @@ public class Main {
         }
 
         return output;
+    }
+
+    public static void main(String[] args) throws Exception {
+    	
+    	Map<String,String> hT = new HashMap<String,String>();
+    	hT.put("teste", new String("13"));
+        
+        try {
+	        File text = new File("Calc.stk");
+	        try (Scanner scanner = new Scanner(text)) {
+                while (scanner.hasNextLine()) {
+                    String str = scanner.nextLine();
+
+                    if (isInteger(str)) {
+                        stack.push(str);
+                    } else if (isop(str)) {
+                        String value_now = op(str, stack, hT);          
+                        if (stack.size() == 0) {
+                            System.out.println();
+                        }
+
+                        stack.push(value_now);
+                    } 
+                    else if (isId(str)) {
+                    	stack.push(str);
+                    }
+                    
+                    else {
+                        System.out.println("Error: Character not allowed: " + str);
+                        throw new Exception("Character not allowed");
+                    }
+
+                }
+                System.out.print("The result is... " + stack.pop() + "!");
+
+                scanner.close();
+            }
+	    } catch (FileNotFoundException e) {
+	        System.out.println("Error when read the file...");
+	        e.printStackTrace();
+	    }
+    }
+
+    // REGEX
+
+    public static boolean isInteger(String input) {
+        if (input == null)
+            return false;
+
+        return input.matches("(\\d)+");
+    }
+
+    public static boolean isop(String input) {
+        if (input == null)
+            return false;
+
+        return input.matches("(\\+|-|\\*|/)");
+    }
+    
+    public static boolean isId(String input) {
+        if (input == null)
+            return false;
+
+        return input.matches("([A-Za-z])");
+    }
+
+    // END OF REGEX
+    
+    public static int hm (Map<String,String> hT, String key) throws Exception {
+    	 if (hT.containsKey(key)) {
+    		 return Integer.parseInt(hT.get(key)) ;
+    	 }
+    	 else {
+    		 throw new Exception(key + " cannot be resolved");
+    	 }
     }
 
     public static int algorithm(String op, String l, String r, Map<String,String> hT) throws Exception {
@@ -89,81 +163,6 @@ public class Main {
     	}
     	
     	return value;
-    }
-
-    // REGEX
-
-    public static boolean isInteger(String input) {
-        if (input == null)
-            return false;
-
-        return input.matches("(\\d)+");
-    }
-
-    public static boolean isop(String input) {
-        if (input == null)
-            return false;
-
-        return input.matches("(\\+|-|\\*|/)");
-    }
-    
-    public static boolean isId(String input) {
-        if (input == null)
-            return false;
-
-        return input.matches("([A-Za-z])");
-    }
-
-    // END OF REGEX
-    
-    public static int hm (Map<String,String> hT, String key) throws Exception {
-    	 if (hT.containsKey(key)) {
-    		 return Integer.parseInt(hT.get(key)) ;
-    	 }
-    	 else {
-    		 throw new Exception(key + " cannot be resolved");
-    	 }
-    }
-
-    public static void main(String[] args) throws Exception {
-    	
-    	Map<String,String> hT = new HashMap<String,String>();
-    	hT.put("teste", new String("13"));
-        
-        try {
-	        File text = new File("Calc.stk");
-	        try (Scanner scanner = new Scanner(text)) {
-                while (scanner.hasNextLine()) {
-                    String str = scanner.nextLine();
-
-                    if (isInteger(str)) {
-                        stack.push(str);
-                    } else if (isop(str)) {
-                        String value_now = op(str, stack, hT);          
-                        if (stack.size() == 0) {
-                            System.out.println();
-                        }
-
-                        stack.push(value_now);
-                    } 
-                    else if (isId(str)) {
-                    	stack.push(str);
-                    }
-                    
-                    else {
-                        System.out.println("Error: Character not allowed: " + str);
-                        throw new Exception("Character not allowed");
-                    }
-
-                }
-                System.out.print("The result is... " + stack.pop() + "!");
-
-                scanner.close();
-            }
-	    } catch (FileNotFoundException e) {
-	        System.out.println("Error when read the file...");
-	        e.printStackTrace();
-	    }
     }
 
 }
